@@ -58,6 +58,7 @@ def view_file(filename):
 def view_blockchain():
     return jsonify(blockchain.to_dict())
 
-# 🔥 Start the Flask development server
+# 🔥 Railway-compatible startup
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Use Railway's PORT or fallback to 5000
+    app.run(host='0.0.0.0', port=port)
